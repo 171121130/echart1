@@ -13,7 +13,6 @@ def connect_mysql(conn):
   cursor.execute('set names utf8')
   return cursor
 
-
 #首页
 @app.route('/')
 def index():
