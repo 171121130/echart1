@@ -11,7 +11,8 @@ def connect_mysql(conn):
   cursor=conn.cursor()
   #设置数据输入输出编码格式
   cursor.execute('set names utf8')
-  return cursor  
+  return cursor
+
 
 #首页
 @app.route('/')
