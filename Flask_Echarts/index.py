@@ -54,7 +54,7 @@ def show_zwyx_dd():
                 #存在则在原来基础上增加新的数值
                 count_zw[dd_name] = {'name': dd_name, 'value': (value[0]+count_zw[dd_name]['value'])}
             # 判断平均薪资是否存在地点名
-            if not avg_zwyx.has_key(dd_name):
+            if not dd_name in avg_zwyx:
                 #不存在则创建记录并存入对应数值
                 avg_zwyx[dd_name] = {'name': dd_name, 'value': round(value[1],2)}
             else:
@@ -110,6 +110,7 @@ def show_zwyx_xl():
         min_xz=[]
         #循环遍历存入数据
         for item in xl_zwyx_list:
+            print(item)
             count_zw.append(item[0])
             avg_zw.append(round(item[1],2))#精度保留2位小数
             xl_list.append(item[2])
@@ -283,7 +284,7 @@ def show_zwyx_zwmc():
     min_xz['其他'] = 0
     zwmc_zwyx_list=cursor.fetchall()
     #打开职位分类文本
-    file = open('ca_list.txt', 'r')
+    file = open('ca_list.txt', 'r',encoding = 'utf-8')
     lines = file.readline()
     if zwmc_zwyx_list:
         #提取数据
@@ -452,4 +453,4 @@ if __name__ == '__main__':
     # 调试模式
     app.debug = True
     # 外部可访问的服务器
-    app.run(host='0.0.0.0')
+    app.run(host='127.0.0.1')
